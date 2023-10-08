@@ -1,4 +1,4 @@
-import {IndexPres} from '@/app/_index/IndexPres'
+import {IndexPres} from '@/app/_features'
 
 export default function Home() {
   return <IndexPres/>

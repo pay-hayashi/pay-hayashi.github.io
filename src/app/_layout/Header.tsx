@@ -9,12 +9,15 @@ const comfortaa = Comfortaa({
 export const Header = () => {
   return (
     <header className="h-20 border-b-2 flex items-center justify-between">
-      <div className={twMerge(comfortaa.className, 'text-2xl')}>
+      <h1 className={twMerge(comfortaa.className, 'text-2xl')}>
         Jumpei Hayashi
-      </div>
-      <div>
+      </h1>
+      <nav>
+        (ページが複数あればリンク)
+      </nav>
+      <aside>
         （SNSのアイコンとか）
-      </div>
+      </aside>
     </header>
   )
 }
