@@ -13,10 +13,10 @@ export const Header = () => {
         Jumpei Hayashi
       </h1>
       <nav>
-        (ページが複数あればリンク)
+        {}
       </nav>
       <aside>
-        （SNSのアイコンとか）
+        {}
       </aside>
     </header>
   )

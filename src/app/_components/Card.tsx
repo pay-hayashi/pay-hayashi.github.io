@@ -54,8 +54,6 @@ const colors = [
   'bg-[#FFFFC0]',
   'bg-[#AB82AB]',
   'bg-[#00A19D]',
-  'bg-[#AB82AB]',
-  'bg-[#DFFF00]',
 ]
 
 export class RotationColor {
