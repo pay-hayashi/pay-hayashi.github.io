@@ -52,6 +52,16 @@ export const IndexPres = () => {
         </Card.Content>
       </Card>
 
+      {/* Blog */}
+      <Card classname={`${colors.get}`}>
+        <Card.Title>
+          Blog
+        </Card.Title>
+        <Card.Content>
+          Coming Soon...
+        </Card.Content>
+      </Card>
+
       {/* Contact */}
       <Card classname={`${colors.get}`}>
         <Card.Title>
@@ -69,10 +79,6 @@ export const IndexPres = () => {
             </Dl.Container>
           </Dl>
         </Card.Content>
-      </Card>
-
-      <Card classname={`${colors.get}`}>
-        {}
       </Card>
 
       <Card classname={`${colors.get}`}>
