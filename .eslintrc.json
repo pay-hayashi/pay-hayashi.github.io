@@ -1,40 +1,85 @@
 {
-    "env": {
-        "browser": true,
-        "es2021": true
-    },
-    "extends": [
-        "eslint:recommended",
-        "plugin:@typescript-eslint/recommended",
-        "plugin:react/recommended"
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": [
+    "@typescript-eslint",
+    "react",
+    "import"
+  ],
+  "rules": {
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off",
+    "indent": [
+      "error",
+      2
     ],
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-        "ecmaVersion": "latest",
-        "sourceType": "module"
-    },
-    "plugins": [
-        "@typescript-eslint",
-        "react"
+    "linebreak-style": [
+      "error",
+      "unix"
     ],
-    "rules": {
-        "react/jsx-uses-react": "off",
-        "react/react-in-jsx-scope": "off",
-        "indent": [
-            "error",
-            2
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "semi": [
+      "error",
+      "never"
+    ],
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "builtin",
+          // 組み込みモジュール
+          "external",
+          // npmでインストールした外部ライブラリ
+          "internal",
+          // 自作モジュール
+          [
+            "parent",
+            "sibling"
+          ],
+          "object",
+          "type",
+          "index"
         ],
-        "linebreak-style": [
-            "error",
-            "unix"
+        "newlines-between": "always",
+        // グループ毎にで改行を入れる
+        "pathGroupsExcludedImportTypes": [
+          "builtin"
         ],
-        "quotes": [
-            "error",
-            "single"
-        ],
-        "semi": [
-            "error",
-            "never"
+        "alphabetize": {
+          "order": "asc",
+          // 昇順にソート
+          "caseInsensitive": true
+          // 小文字大文字を区別する
+        },
+        "pathGroups": [
+          // 指定した順番にソートされる
+          {
+            "pattern": "@/components/common",
+            "group": "internal",
+            "position": "before"
+          },
+          {
+            "pattern": "@/components/hooks",
+            "group": "internal",
+            "position": "before"
+          }
         ]
-    }
+      }
+    ]
+  }
 }
