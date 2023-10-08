@@ -1,11 +1,19 @@
 import {ReactNode} from 'react'
+import {twMerge} from 'tailwind-merge'
 
 type CardProps = {
+  classname?: string
   children: ReactNode
 }
-export const Card = ({children}: CardProps) => {
+export const Card = ({classname, children}: CardProps) => {
   return (
-    <article className="border p-7 aspect-square flex flex-col text-center justify-center">
+    <article
+      className={twMerge(
+        'p-7 aspect-square flex flex-col text-center justify-center z-0',
+        'hover:transition duration-300 hover:scale-110 hover:z-10',
+        classname,
+      )}
+    >
       {children}
     </article>
   )
@@ -37,4 +45,29 @@ Card.Content = function Content({children}: ContentProps) {
       </section>
     </div>
   )
+}
+
+const colors = [
+  'bg-[#FF8C9D]',
+  'bg-[#7FB3D1]',
+  'bg-[#C0C0FF]',
+  'bg-[#FFFFC0]',
+  'bg-[#AB82AB]',
+  'bg-[#00A19D]',
+  'bg-[#AB82AB]',
+  'bg-[#DFFF00]',
+]
+
+export class RotationColor {
+  private cnt: number
+
+  constructor() {
+    this.cnt = 0
+  }
+
+  get get() {
+    const colorCode = colors[this.cnt]
+    this.cnt = (this.cnt + 1) % colors.length
+    return `${colorCode} text-slate-800`
+  }
 }

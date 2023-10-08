@@ -1,11 +1,12 @@
 import './globals.css'
 import {Inter} from 'next/font/google'
 import {ReactNode} from 'react'
-
-import type {Metadata} from 'next'
+import {twMerge} from 'tailwind-merge'
 
 import {Body} from '@/app/_layout/Body'
 import {Header} from '@/app/_layout/Header'
+
+import type {Metadata} from 'next'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -24,7 +25,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja">
-      <body className={inter.className}>
+      <body className={twMerge(inter.className, 'text-slate-100 bg-slate-600')}>
         <Body>
           <Header/>
           {children}

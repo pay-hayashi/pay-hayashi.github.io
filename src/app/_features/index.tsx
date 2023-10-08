@@ -1,12 +1,13 @@
-import {Card} from '@/app/_components/Card'
+import {Card, RotationColor} from '@/app/_components/Card'
 import {Dl} from '@/app/_components/Dl'
 
 export const IndexPres = () => {
+  const colors = new RotationColor()
   return (
-    <main className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 py-5">
+    <main className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 py-5 gap-10">
 
       {/* About this */}
-      <Card>
+      <Card classname={`${colors.get}`}>
         <Card.Title>
           About This Page
         </Card.Title>
@@ -17,7 +18,7 @@ export const IndexPres = () => {
       </Card>
 
       {/* About me */}
-      <Card>
+      <Card classname={`${colors.get}`}>
         <Card.Title>
           About me
         </Card.Title>
@@ -29,7 +30,7 @@ export const IndexPres = () => {
       </Card>
 
       {/* Tech Stack */}
-      <Card>
+      <Card classname={`${colors.get}`}>
         <Card.Title>
           Tech Stack
         </Card.Title>
@@ -52,7 +53,7 @@ export const IndexPres = () => {
       </Card>
 
       {/* Contact */}
-      <Card>
+      <Card classname={`${colors.get}`}>
         <Card.Title>
           Contact
         </Card.Title>
@@ -68,6 +69,14 @@ export const IndexPres = () => {
             </Dl.Container>
           </Dl>
         </Card.Content>
+      </Card>
+
+      <Card classname={`${colors.get}`}>
+        {}
+      </Card>
+
+      <Card classname={`${colors.get}`}>
+        {}
       </Card>
 
     </main>
