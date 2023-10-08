@@ -4,7 +4,7 @@ import {Dl} from '@/app/_components/Dl'
 export const IndexPres = () => {
   const colors = new RotationColor()
   return (
-    <main className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 py-5 gap-10">
+    <main className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 py-10 gap-10">
 
       {/* About this */}
       <Card classname={`${colors.get}`}>

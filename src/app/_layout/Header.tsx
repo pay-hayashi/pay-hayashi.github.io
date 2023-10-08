@@ -8,7 +8,7 @@ const comfortaa = Comfortaa({
 
 export const Header = () => {
   return (
-    <header className="h-20 border-b-2 flex items-center justify-between">
+    <header className="h-20 border-b-2 border-slate-300 flex items-center justify-between">
       <h1 className={twMerge(comfortaa.className, 'text-2xl')}>
         Jumpei Hayashi
       </h1>

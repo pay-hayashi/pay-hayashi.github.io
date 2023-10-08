@@ -1,5 +1,5 @@
 import './globals.css'
-import {Inter} from 'next/font/google'
+import {Raleway} from 'next/font/google'
 import {ReactNode} from 'react'
 import {twMerge} from 'tailwind-merge'
 
@@ -8,7 +8,7 @@ import {Header} from '@/app/_layout/Header'
 
 import type {Metadata} from 'next'
 
-const inter = Inter({ subsets: ['latin'] })
+const font = Raleway({weight: '500', subsets: ['latin']})
 
 export const metadata: Metadata = {
   title: 'Jumpei Hayashi | 林 純平',
@@ -25,7 +25,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja">
-      <body className={twMerge(inter.className, 'text-slate-100 bg-slate-600')}>
+      <body className={twMerge(font.className, 'text-slate-100 bg-slate-600')}>
         <Body>
           <Header/>
           {children}

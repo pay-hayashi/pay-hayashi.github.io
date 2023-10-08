@@ -24,8 +24,8 @@ type TitleProps = {
 }
 Card.Title = function Title({children}: TitleProps) {
   return (
-    <div className="grid items-center font-bold text-2xl py-5">
-      <h2>{children}</h2>
+    <div className='grid items-center text-2xl py-5'>
+      <h2 className='font-extrabold'>{children}</h2>
     </div>
   )
 }
@@ -50,10 +50,10 @@ Card.Content = function Content({children}: ContentProps) {
 const colors = [
   'bg-[#FF8C9D]',
   'bg-[#7FB3D1]',
-  'bg-[#C0C0FF]',
+  'bg-[#FFAA8C]',
   'bg-[#FFFFC0]',
-  'bg-[#AB82AB]',
-  'bg-[#00A19D]',
+  'bg-[#82AB82]',
+  'bg-[#A1FF9D]',
 ]
 
 export class RotationColor {
