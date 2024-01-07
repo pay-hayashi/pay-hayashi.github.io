@@ -1,5 +1,5 @@
-import {IndexPres} from '@/app/_features'
+import {Index} from '../features/home'
 
 export default function Home() {
-  return <IndexPres/>
+  return <Index/>
 }

@@ -1,90 +1,36 @@
-# Jumpei Hayashi Portfolio
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-Jumpei Hayashi のポートフォリオサイトです。
+## Getting Started
 
-フロントエンドエンジニアのポートフォリオサイトとして、
-サイトに使用している技術をこの README にまとめます。
+First, run the development server:
 
-## 使用技術
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-このサイトは主に Next.js で実装され、
-Static Site Generating によりレンダリングしています。
-ビルドしたサイトは Github Pages を用いてホスティングしています。
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## 設計
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-### 概要
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-まず設計思想は後述とするものとし、
-ここでは概要を記載します。
+## Learn More
 
-- `page.tsx` にはページの見た目やデータに関わる部分は一切記述しない
-  - meta情報など、見た目以外で HTML に関する情報のみを扱う
-  - `_features/index.tsx` 内のコンポーネントを呼ぶ
-- `page.tsx` と並列に以下のディレクトリを置く
-  - `_components`
-    - 対応する `page.tsx` とそれ以下のルートにある `_features` で利用できるコンポーネント類
-    - 再利用を前提としたコンポーネントのみを置くことができる
-  - `_features`
-    - 対応する `page.tsx` から呼ばれるコンポーネントと、それが呼ぶ再利用不可のコンポーネント類
-    - サーバーコンポーネントとして `index.tsx` に可能な限り画面を実装する
-    - クライアントコンポーネントにはファイル名末尾を 「`Client`」 とする
+To learn more about Next.js, take a look at the following resources:
 
-### 全体の考え方
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-当サイトには以下の特徴があり、
-これらを意識した独自の設計パターンを採用しています。
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-- 当サイトは1人で開発・運用している
-  - Atomic Design のように細かくコンポーネントを分けるのはオーバーキル
-- 当サイトは現状1ページ構成だが、拡張性を考えて複数ページを前提とした構成とする
-- ポートフォリオサイトという特性上、複雑なロジックはほとんどない
+## Deploy on Vercel
 
-### App Router を積極的に利用
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Next.js v13.4 以降、App Router によるルーティングが Stableになりました。
-
-この App Router では、特定のファイル名・ディレクトリ名をつけることで、
-特殊な働きを持たせることができます。
-具体的には、app ディレクトリ以下でもルーティングしないディレクトリを作成したり、
-ルートをグルーピングしたりすることができます。
-
-当サイトではこの機能を積極的に利用し、
-特定ルートに紐づくファイルは app ディレクトリにまとめ、
-反対に型情報などプロジェクト全体で使用するファイルは app ディレクトリ外に置く、
-といったディレクトリ構成を目指します。
-
-### コンポーネントの切り分け
-
-再利用性に着目し、 コンポーネントを
-「再利用する部品 = components」
-「再利用せず画面に紐づく部品 = features」
-の2種類に大別します。
-以下、React の文脈で一般的に用いられる意味では「コンポーネント」と表記し、
-再利用可能な部品として用いる意味では「component(s)」と表記します。
-
-App Router はサーバーコンポーネントとクライアントコンポーネントを厳密に区別しています。
-SSG では
-「はじめからHTMLファイルとして用意される部分」
-「Javascriptにより動的に生成される部分」
-と言い換えられるでしょう。
-レスポンス速度やSEOを考慮した安心感という観点では、
-動的に変化しない（≒状態を持たない）部分については、
-基本的にサーバーコンポーネントによるレンダリングを採用するべきと考えます。
-
-features については、
-一画面内に状態を持つ部分と持たない部分が生じ得ます。
-先述の方針に従って
-「画面1つに対応するサーバーコンポーネントを必ず1つ用意する」
-「やむを得ない部分は別途クライアントコンポーネントに切り出し、
-名前の末尾に `Client` をつける」
-という分け方とします。
-画面全体をクライアントコンポーネントにせざるを得ない場合であっても、
-それを明示するために、
-クライアントコンポーネントを呼び出すだけのサーバーコンポーネントを用意します。
-
-components は基本的に小さい粒度になるため、
-部品内でサーバー/クライアントを分離する必要がないと考えます
-（言い換えると、
-分離する必要がある場合は部品として大きすぎるとみなし、
-別の component に切り出すべきであると考えます）。
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
