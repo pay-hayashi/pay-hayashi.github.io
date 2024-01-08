@@ -155,7 +155,12 @@ export const IndexPres = () => {
                 `${i % 2 ? 'bg-stone-100' : 'bg-stone-900'}`,
               )}
             >
-              <div className="lg:w-2/5 mix-blend-difference">
+              <div
+                className={twMerge(
+                  'lg:w-2/5 mix-blend-difference',
+                  i % 2 ? 'lg:text-left' : 'lg:text-right',
+                )}
+              >
                 <h2 className="underline text-6xl font-bold tracking-wider lg:whitespace-pre-wrap">
                   {`#${i + 1}\n${title}`}
                 </h2>
