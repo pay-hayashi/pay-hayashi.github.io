@@ -1,6 +1,8 @@
 'use client'
+import Image from 'next/image'
+import Link from 'next/link'
 import {ReactNode} from 'react'
-import {Link} from 'react-scroll'
+import {animateScroll, Link as ScrollLink} from 'react-scroll'
 import {twMerge} from 'tailwind-merge'
 
 type Content = { title: string, idName: string, body: (key: number) => ReactNode }
@@ -65,68 +67,100 @@ const contents: Content[] = [
     title: 'Contact',
     idName: 'contact',
     body: (key) => (
-      <dl key={key} className="flex flex-col gap-5 text-2xl">
+      <dl key={key} className="flex flex-col gap-10 text-2xl">
         {
-          ([
-            ['X / Twitter', '@pancake_tor'],
-            ['Email', 'pancake.tor@gmail.com'],
-          ] as [string, string][]).map(([dt, dd], i) => (
-            <div key={i} className="flex">
-              <dt className="w-40 font-bold">{dt}</dt>
-              <dd>{dd}</dd>
-            </div>
-          ))
+          [
+            {
+              href: 'https://twitter.com/pancake_tor',
+              src: '/twitter/logo-white.png',
+              alt: 'X (Twitter) Logo.',
+              disc: 'pancake_tor',
+            },
+            {
+              href: 'https://github.com/pay-hayashi',
+              src: '/github/github-mark-white.png',
+              alt: 'Github Logo.',
+              disc: 'pay-hayashi',
+            },
+            {
+              href: '',
+              src: '/mail-white.png',
+              alt: 'Mail Logo.',
+              disc: 'pancake.tor [at] gmail.com'
+            },
+          ].map(({href, src, alt, disc}, i) => {
+            const Wrapper = ({children}: { children: ReactNode }) => (
+              href
+                ? <Link href={href} target="_blank" rel="noopener noreferrer">{children}</Link>
+                : <div>{children}</div>
+            )
+            return (
+              <Wrapper key={i}>
+                <div className="flex items-center gap-10">
+                  <dt className="w-10 aspect-square font-bold flex justify-center">
+                    <Image src={src} width={40} height={40} alt={alt}/>
+                  </dt>
+                  <dd>{disc}</dd>
+                </div>
+              </Wrapper>
+            )
+          })
         }
       </dl>
     )
   },
 ]
 
-const padding = 'px-5 md:px-20'
+const paddingX = 'px-5 md:px-20'
 export const IndexPres = () => {
   return (
     <div className="text-gray-50">
       {/* Header */}
-      <div className={`${padding} sticky top-0 py-10 flex justify-between items-center mix-blend-difference`}>
+      <div className={`${paddingX} sticky top-0 py-10 z-10 flex justify-between items-center mix-blend-difference`}>
         <div>
-          <h1 className="text-3xl font-bold">Jumpei Hayashi</h1>
+          <h1 className="text-3xl font-bold" onClick={() => animateScroll.scrollToTop({duration: 500})}>
+            Jumpei Hayashi
+          </h1>
         </div>
         <div className="flex gap-5 font-bold">
           {
             contents.map(({title, idName}, i) => (
-              <Link
+              <ScrollLink
                 key={i}
                 to={idName}
-                activeClass={''}
+                className='cursor-pointer relative after:content-[""] after:absolute after:left-0 after:h-0.5 after:bg-white after:bottom-0 after:transition-all after:duration-100 after:w-0 hover:after:w-full'
+                activeClass="after:w-full"
                 spy={true}
                 smooth={true}
+                duration={500}
                 offset={-100}
               >
                 {title}
-              </Link>
+              </ScrollLink>
             ))
           }
         </div>
       </div>
 
       {/* Body */}
-      <div className={'my-32 grid grid-cols-1 gap-56'}>
+      <div className={'my-0 grid grid-cols-1 gap-0'}>
         {
           contents.map(({title, idName, body}, i) => (
             <div
               key={i}
               id={idName}
               className={twMerge(
-                `${padding} flex flex-col gap-10`,
-                `${i % 2 ? 'lg:flex-row-reverse' : 'lg:flex-row'} lg:gap-14`
+                `${paddingX} py-28 flex flex-col gap-10`,
+                `${i % 2 ? 'lg:flex-row-reverse' : 'lg:flex-row'} lg:gap-14`,
+                `${i % 2 ? 'bg-stone-100' : 'bg-stone-900'}`,
               )}
             >
-              <div className="lg:w-2/5">
+              <div className="lg:w-2/5 mix-blend-difference">
                 <h2 className="underline text-6xl font-bold tracking-wider lg:whitespace-pre-wrap">
                   {`#${i + 1}\n${title}`}
                 </h2>
               </div>
-              <div className="lg:w-3/5">
+              <div className="lg:w-3/5 mix-blend-difference">
                 {body(i)}
               </div>
             </div>
